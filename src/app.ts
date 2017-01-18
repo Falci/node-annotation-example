@@ -5,8 +5,6 @@ import * as express from "express";
 import { Application } from "express";
 import { useExpressServer } from "routing-controllers";
 
-import "./controllers/UserController";
-
 class Server {
 
   public app: Application;
@@ -21,7 +19,9 @@ class Server {
   }
 
   private config() {
-    useExpressServer(this.app);
+    useExpressServer(this.app, {
+      controllers: [__dirname + "/controllers/*.js"]
+    });
   }
 }
 
